@@ -12,12 +12,12 @@ public class TestBase {
 
     static ApplicationManager app = new ApplicationManager();
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void setUp() throws IOException {
         app.init();
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void stop(){
         app.tearDown();
     }

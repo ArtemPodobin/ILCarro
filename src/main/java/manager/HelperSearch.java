@@ -14,9 +14,6 @@ public class HelperSearch extends HelperBase{
 
 public void fillSearchForm(String city, String dateFrom, String dateTo){
     fillCity(city);
-//    selectPeriodDays(dateFrom, dateTo);
-//    selectPeriodDaysDatePicker(dateFrom, dateTo);
-//    selectPeriodMonthsDatePicker(dateFrom, dateTo);
     selectPeriodYearsDatePicker(dateFrom, dateTo);
 }
 
@@ -26,22 +23,17 @@ public void fillSearchForm(String city, String dateFrom, String dateTo){
     }
 
 public void selectPeriodDays(String dateFrom, String dateTo){
-//click(By.id("dates"));
 type(By.id("dates"), dateFrom + " - " + dateTo);
 click(By.id("city"));
 pause(3000);
-//"7/14/2023 - 7/15/2023"
+
 }
 
 public void selectPeriodDaysDatePicker(String dateFrom, String dateTo){
         String[] startDate = dateFrom.split("/");
         String[] endDate = dateTo.split("/");
-        //  7/15/2023
-    //index 0 1  2
     click(By.id("dates"));
     pause(1000);
-//    click(By.xpath("//div[.=' " + startDate[1] + " ']"));
-//    click(By.xpath("//div[.=' " + endDate[1] + " ']"));
     String locatorStartDate = String.format("//div[.=' %s ']", startDate[1]);
     String locatorEndDate = String.format("//div[.=' %s ']", endDate[1]);
     click(By.xpath(locatorStartDate));
@@ -108,9 +100,6 @@ public void selectPeriodDaysDatePicker(String dateFrom, String dateTo){
 
         click(By.xpath(locatorEndDate));
     }
-
-
-
 
     public void submitForm(){
         wd.findElement(By.xpath("//button[@type='submit']")).click();
