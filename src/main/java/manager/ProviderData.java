@@ -20,8 +20,8 @@ public class ProviderData {
         while (line != null){
             String[] split = line.split(",");
             list.add(new Object[]{ User.builder()
-                    .email(split[2])
-                    .password(split[3])
+                    .email(split[0])
+                    .password(split[1])
                     .build()
             });
             line = reader.readLine();
@@ -76,7 +76,7 @@ public Iterator<Object[]> userRegDtoCSV() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/search_dataset.csv")));
         String line = reader.readLine();
         while (line != null){
-            String[] split = line.split(",");
+            String[] split = line.split(";");
             list.add(new Object[]{SearchCar.builder()
                     .city(split[0])
                     .start(split[1])

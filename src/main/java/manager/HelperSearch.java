@@ -1,5 +1,6 @@
 package manager;
 
+import models.SearchCar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,9 +13,9 @@ public class HelperSearch extends HelperBase{
         super(wd);
     }
 
-public void fillSearchForm(String city, String dateFrom, String dateTo){
-    fillCity(city);
-    selectPeriodYearsDatePicker(dateFrom, dateTo);
+public void fillSearchForm(SearchCar search){
+    fillCity(search.getCity());
+    selectPeriodYearsDatePicker(search.getStart(), search.getEnd());
 }
 
     public void fillCity(String address){
@@ -99,6 +100,10 @@ public void selectPeriodDaysDatePicker(String dateFrom, String dateTo){
         }
 
         click(By.xpath(locatorEndDate));
+    }
+    public void openSearchForm(){
+        wd.findElement(By.xpath("//a[@id='0']")).click();
+
     }
 
     public void submitForm(){

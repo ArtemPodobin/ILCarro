@@ -26,11 +26,13 @@ test {
     useTestNG()
 }
 
-task tests(type:Test){
+task myTests(type:Test){
     useTestNG(){
         def suite = System.getProperty('suite','')
         if(suite.equals('login')){
             suites 'src/test/resources/login.xml'
+        } else if(suite.equals('search')) {
+            suites 'src/test/resources/search.xml'
         } else {
             suites 'src/test/resources/testng.xml'
         }
